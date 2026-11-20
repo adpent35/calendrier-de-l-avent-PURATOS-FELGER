@@ -12,11 +12,20 @@ const adminPanel = document.getElementById("adminPanel");
 
 const daySelect = document.getElementById("daySelect");
 
+const testDay = document.getElementById("testDay");
+
 for (let i = 1; i <= 24; i++) {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = "Jour " + i;
-    daySelect.appendChild(option);
+
+    const option1 = document.createElement("option");
+    option1.value = i;
+    option1.textContent = "Jour " + i;
+    daySelect.appendChild(option1);
+
+    const option2 = document.createElement("option");
+    option2.value = i;
+    option2.textContent = "Jour " + i;
+    testDay.appendChild(option2);
+
 }
 
 gear.addEventListener("click", () => {
@@ -47,7 +56,13 @@ for (let i = 1; i <= 24; i++) {
 
     const today = new Date();
 
-    if (today.getMonth() === 11 && today.getDate() >= i) {
+const jourTest =
+parseInt(localStorage.getItem("testDay")) || 0;
+
+if (
+    jourTest >= i ||
+    (today.getMonth() === 11 && today.getDate() >= i)
+) {
 
         box.textContent = i;
 
@@ -138,3 +153,25 @@ modal.addEventListener("click", (e) => {
     }
 
 });
+
+function setTestDay() {
+
+    const jour = document.getElementById("testDay").value;
+
+    localStorage.setItem("testDay", jour);
+
+    alert("Mode test activé jusqu'au jour " + jour);
+
+    location.reload();
+
+}
+
+function resetTestDay() {
+
+    localStorage.removeItem("testDay");
+
+    alert("Mode normal réactivé");
+
+    location.reload();
+
+}
