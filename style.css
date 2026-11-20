@@ -122,3 +122,28 @@ h1{
     }
 
 }
+
+#adminPanel hr{
+    margin:15px 0;
+}
+
+#adminPanel h3{
+    margin:10px 0;
+}
+
+#testDay{
+    width:100%;
+    margin-bottom:10px;
+}
+
+#adminPanel button{
+    display:block;
+    width:100%;
+    margin-bottom:10px;
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#adminPanel button:hover{
