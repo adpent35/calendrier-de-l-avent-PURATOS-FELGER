@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, sans-serif;
+    background: #b71c1c;
+    color:white;
+    text-align:center;
+    margin:0;
+    padding:20px;
+}
+
+h1{
+    margin-bottom:30px;
+}
+
+#calendar{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    max-width:700px;
+    margin:auto;
+}
+
+.case{
+    background:white;
+    color:#b71c1c;
+    font-size:24px;
+    font-weight:bold;
+    border-radius:15px;
+    aspect-ratio:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+@media(max-width:600px){
+    #calendar{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
