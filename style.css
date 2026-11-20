@@ -1,39 +1,124 @@
 body{
-    font-family: Arial, sans-serif;
-    background: #b71c1c;
-    color:white;
-    text-align:center;
     margin:0;
     padding:20px;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    background:linear-gradient(180deg,#b71c1c,#7f0000);
+    min-height:100vh;
+    color:white;
 }
 
 h1{
     margin-bottom:30px;
 }
 
+#gear{
+    position:fixed;
+    top:15px;
+    right:15px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:24px;
+}
+
 #calendar{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+    gap:12px;
     max-width:700px;
     margin:auto;
 }
 
 .case{
     background:white;
-    color:#b71c1c;
-    font-size:24px;
-    font-weight:bold;
+    color:#c62828;
     border-radius:15px;
     aspect-ratio:1;
     display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.case:hover{
+    transform:scale(1.05);
+}
+
+.locked{
+    background:#888;
+    color:white;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
     justify-content:center;
     align-items:center;
+    flex-direction:column;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:70vh;
+    border-radius:15px;
+}
+
+#modalText{
+    margin-top:15px;
+    color:white;
+    font-size:20px;
+}
+
+#close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+#adminPanel{
+    display:none;
+    position:fixed;
+    top:80px;
+    right:10px;
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:15px;
+    width:280px;
+    z-index:999;
+}
+
+#adminPanel input,
+#adminPanel textarea,
+#adminPanel select{
+    width:100%;
+    margin-bottom:10px;
+}
+
+#adminPanel button{
+    width:100%;
+    padding:10px;
     cursor:pointer;
 }
 
 @media(max-width:600px){
+
     #calendar{
         grid-template-columns:repeat(3,1fr);
     }
+
+    .case{
+        font-size:22px;
+    }
+
 }
