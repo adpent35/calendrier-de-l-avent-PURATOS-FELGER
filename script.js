@@ -68,23 +68,35 @@ if (
 
         box.addEventListener("click", () => {
 
-            const photo = localStorage.getItem("photo_" + i);
+const extensions = ["jpg", "webp", "jpeg", "png"];
 
-            const texte = localStorage.getItem("message_" + i);
+let imageTrouvee = false;
 
-            if (photo) {
+for (const ext of extensions) {
 
-                modalImage.src = photo;
+    const url = `images/${i}.${ext}`;
 
-                modalText.textContent = texte || "";
+    const testImage = new Image();
 
-                modal.style.display = "flex";
+    testImage.onload = function () {
 
-            } else {
+        modalImage.src = url;
+        modalText.textContent = "";
+        modal.style.display = "flex";
 
-                alert("Aucune photo enregistrée pour ce jour");
+    };
 
-            }
+    testImage.src = url;
+
+    imageTrouvee = true;
+
+    break;
+
+}
+
+if (!imageTrouvee) {
+    alert("Image introuvable");
+}
 
         });
 
