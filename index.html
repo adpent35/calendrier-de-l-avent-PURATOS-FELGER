@@ -3,16 +3,50 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendrier de l'Avent Puratos Felger</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Calendrier de l'Avent 2026</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<button id="gear">⚙️</button>
+
 <h1>🎄 Calendrier de l'Avent 2026 🎄</h1>
 
 <div id="calendar"></div>
+
+<div id="modal" class="modal">
+    <span id="close">&times;</span>
+
+    <img id="modalImage">
+
+    <p id="modalText"></p>
+</div>
+
+<div id="adminPanel">
+
+    <h2>Administration</h2>
+
+    <label>Jour :</label>
+
+    <select id="daySelect"></select>
+
+    <label>Photo :</label>
+
+    <input type="file" id="photoInput" accept="image/*">
+
+    <label>Message :</label>
+
+    <textarea id="messageInput"></textarea>
+
+    <button onclick="saveDay()">
+        💾 Enregistrer
+    </button>
+
+</div>
 
 <script src="script.js"></script>
 
