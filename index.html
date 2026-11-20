@@ -22,24 +22,42 @@
         <p id="modalText"></p>
     </div>
 
-    <div id="adminPanel">
+<div id="adminPanel">
 
-        <h2>Administration</h2>
+    <h2>Administration</h2>
 
-        <label>Jour :</label>
-        <select id="daySelect"></select>
+    <label>Jour :</label>
+    <select id="daySelect"></select>
 
-        <label>Photo :</label>
-        <input type="file" id="photoInput" accept="image/*">
+    <label>Photo :</label>
+    <input type="file" id="photoInput" accept="image/*">
 
-        <label>Message :</label>
-        <textarea id="messageInput"></textarea>
+    <label>Message :</label>
+    <textarea id="messageInput"></textarea>
 
-        <button onclick="saveDay()">
-            💾 Enregistrer
-        </button>
+    <button onclick="saveDay()">
+        💾 Enregistrer
+    </button>
 
-    </div>
+    <hr>
+
+    <h3>Mode Test</h3>
+
+    <label>Déverrouiller jusqu'au jour :</label>
+
+    <select id="testDay">
+        <option value="">Aucun</option>
+    </select>
+
+    <button onclick="setTestDay()">
+        🔓 Déverrouiller
+    </button>
+
+    <button onclick="resetTestDay()">
+        🔒 Retour mode normal
+    </button>
+
+</div>
 
     <script src="script.js"></script>
 
