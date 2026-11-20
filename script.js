@@ -9,7 +9,6 @@ const closeBtn = document.getElementById("close");
 const gear = document.getElementById("gear");
 const adminPanel = document.getElementById("adminPanel");
 
-const daySelect = document.getElementById("daySelect");
 const testDay = document.getElementById("testDay");
 
 const imageExtensions = {
@@ -39,19 +38,15 @@ const imageExtensions = {
     24: "jpg"
 };
 
+// Remplissage de la liste des jours du mode test
 for (let i = 1; i <= 24; i++) {
-
-    const option1 = document.createElement("option");
-    option1.value = i;
-    option1.textContent = "Jour " + i;
-    daySelect.appendChild(option1);
-
-    const option2 = document.createElement("option");
-    option2.value = i;
-    option2.textContent = "Jour " + i;
-    testDay.appendChild(option2);
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = "Jour " + i;
+    testDay.appendChild(option);
 }
 
+// Bouton administration
 gear.addEventListener("click", () => {
 
     const code = prompt("Code administrateur");
@@ -70,10 +65,10 @@ gear.addEventListener("click", () => {
 
 });
 
+// Création des 24 cases
 for (let i = 1; i <= 24; i++) {
 
     const box = document.createElement("div");
-
     box.className = "case";
 
     const today = new Date();
@@ -84,7 +79,7 @@ for (let i = 1; i <= 24; i++) {
     const accessible =
         jourTest >= i ||
         (today.getMonth() === 11 && today.getDate() >= i) ||
-        (today.getMonth() === 0);
+        today.getMonth() === 0;
 
     if (accessible) {
 
@@ -94,8 +89,7 @@ for (let i = 1; i <= 24; i++) {
 
             const extension = imageExtensions[i];
 
-            modalImage.src =
-                `images/${i}.${extension}`;
+            modalImage.src = `images/${i}.${extension}`;
 
             modalText.textContent = "";
 
@@ -106,27 +100,29 @@ for (let i = 1; i <= 24; i++) {
     } else {
 
         box.textContent = "🔒";
-
         box.classList.add("locked");
 
     }
 
     calendar.appendChild(box);
-
 }
 
+// Déverrouillage du mode test
 function setTestDay() {
 
-    const jour = document.getElementById("testDay").value;
+    const jour =
+        document.getElementById("testDay").value;
 
     localStorage.setItem("testDay", jour);
 
-    alert("Mode test activé jusqu'au jour " + jour);
+    alert(
+        "Mode test activé jusqu'au jour " + jour
+    );
 
     location.reload();
-
 }
 
+// Retour au mode normal
 function resetTestDay() {
 
     localStorage.removeItem("testDay");
@@ -134,9 +130,9 @@ function resetTestDay() {
     alert("Mode normal réactivé");
 
     location.reload();
-
 }
 
+// Fermeture de la fenêtre photo
 closeBtn.addEventListener("click", () => {
 
     modal.style.display = "none";
