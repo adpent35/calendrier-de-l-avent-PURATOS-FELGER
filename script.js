@@ -7,12 +7,37 @@ const modalText = document.getElementById("modalText");
 const closeBtn = document.getElementById("close");
 
 const gear = document.getElementById("gear");
-
 const adminPanel = document.getElementById("adminPanel");
 
 const daySelect = document.getElementById("daySelect");
-
 const testDay = document.getElementById("testDay");
+
+const imageExtensions = {
+    1: "webp",
+    2: "jpg",
+    3: "webp",
+    4: "jpg",
+    5: "jpg",
+    6: "jpg",
+    7: "jpg",
+    8: "jpg",
+    9: "jpg",
+    10: "jpg",
+    11: "webp",
+    12: "jpeg",
+    13: "jpg",
+    14: "jpeg",
+    15: "jpg",
+    16: "jpeg",
+    17: "jpg",
+    18: "jpg",
+    19: "webp",
+    20: "jpg",
+    21: "jpg",
+    22: "jpg",
+    23: "jpg",
+    24: "jpg"
+};
 
 for (let i = 1; i <= 24; i++) {
 
@@ -25,12 +50,11 @@ for (let i = 1; i <= 24; i++) {
     option2.value = i;
     option2.textContent = "Jour " + i;
     testDay.appendChild(option2);
-
 }
 
 gear.addEventListener("click", () => {
 
-    const code = prompt("Code Administrateur");
+    const code = prompt("Code administrateur");
 
     if (code === "0308") {
 
@@ -41,9 +65,7 @@ gear.addEventListener("click", () => {
         }
 
     } else {
-
         alert("Code incorrect");
-
     }
 
 });
@@ -56,47 +78,28 @@ for (let i = 1; i <= 24; i++) {
 
     const today = new Date();
 
-const jourTest =
-parseInt(localStorage.getItem("testDay")) || 0;
+    const jourTest =
+        parseInt(localStorage.getItem("testDay")) || 0;
 
-if (
-    jourTest >= i ||
-    (today.getMonth() === 11 && today.getDate() >= i)
-) {
+    const accessible =
+        jourTest >= i ||
+        (today.getMonth() === 11 && today.getDate() >= i) ||
+        (today.getMonth() === 0);
+
+    if (accessible) {
 
         box.textContent = i;
 
         box.addEventListener("click", () => {
 
-const extensions = ["jpg", "webp", "jpeg", "png"];
+            const extension = imageExtensions[i];
 
-let imageTrouvee = false;
+            modalImage.src =
+                `images/${i}.${extension}`;
 
-for (const ext of extensions) {
+            modalText.textContent = "";
 
-    const url = `images/${i}.${ext}`;
-
-    const testImage = new Image();
-
-    testImage.onload = function () {
-
-        modalImage.src = url;
-        modalText.textContent = "";
-        modal.style.display = "flex";
-
-    };
-
-    testImage.src = url;
-
-    imageTrouvee = true;
-
-    break;
-
-}
-
-if (!imageTrouvee) {
-    alert("Image introuvable");
-}
+            modal.style.display = "flex";
 
         });
 
@@ -111,60 +114,6 @@ if (!imageTrouvee) {
     calendar.appendChild(box);
 
 }
-
-function saveDay() {
-
-    const day = document.getElementById("daySelect").value;
-
-    const file = document.getElementById("photoInput").files[0];
-
-    const message = document.getElementById("messageInput").value;
-
-    if (!file) {
-
-        alert("Choisis une photo");
-
-        return;
-
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-
-        localStorage.setItem(
-            "photo_" + day,
-            e.target.result
-        );
-
-        localStorage.setItem(
-            "message_" + day,
-            message
-        );
-
-        alert("Jour " + day + " enregistré avec succès");
-
-    };
-
-    reader.readAsDataURL(file);
-
-}
-
-closeBtn.addEventListener("click", () => {
-
-    modal.style.display = "none";
-
-});
-
-modal.addEventListener("click", (e) => {
-
-    if (e.target === modal) {
-
-        modal.style.display = "none";
-
-    }
-
-});
 
 function setTestDay() {
 
@@ -187,3 +136,17 @@ function resetTestDay() {
     location.reload();
 
 }
+
+closeBtn.addEventListener("click", () => {
+
+    modal.style.display = "none";
+
+});
+
+modal.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+
+});
