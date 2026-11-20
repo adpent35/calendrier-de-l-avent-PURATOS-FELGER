@@ -12,52 +12,47 @@
 
     <button id="gear">⚙️</button>
 
-    <h1>🎄 Calendrier de l'Avent 2026 🎄</h1>
+    <h1>🎄 Calendrier de l'Avent Puratos Felger 2026 🎄</h1>
 
     <div id="calendar"></div>
 
     <div id="modal" class="modal">
         <span id="close">&times;</span>
-        <img id="modalImage" alt="">
+
+        <img id="modalImage" alt="Photo du jour">
+
         <p id="modalText"></p>
     </div>
 
-<div id="adminPanel">
+    <div id="adminPanel">
 
-    <h2>Administration</h2>
+        <h2>⚙️ Administration</h2>
 
-    <label>Jour :</label>
-    <select id="daySelect"></select>
+        <p>
+            Mode réservé à l'administrateur
+        </p>
 
-    <label>Photo :</label>
-    <input type="file" id="photoInput" accept="image/*">
+        <hr>
 
-    <label>Message :</label>
-    <textarea id="messageInput"></textarea>
+        <h3>Mode Test</h3>
 
-    <button onclick="saveDay()">
-        💾 Enregistrer
-    </button>
+        <label for="testDay">
+            Déverrouiller jusqu'au jour :
+        </label>
 
-    <hr>
+        <select id="testDay">
+            <option value="">Choisir un jour</option>
+        </select>
 
-    <h3>Mode Test</h3>
+        <button onclick="setTestDay()">
+            🔓 Déverrouiller
+        </button>
 
-    <label>Déverrouiller jusqu'au jour :</label>
+        <button onclick="resetTestDay()">
+            🔒 Retour au mode normal
+        </button>
 
-    <select id="testDay">
-        <option value="">Aucun</option>
-    </select>
-
-    <button onclick="setTestDay()">
-        🔓 Déverrouiller
-    </button>
-
-    <button onclick="resetTestDay()">
-        🔒 Retour mode normal
-    </button>
-
-</div>
+    </div>
 
     <script src="script.js"></script>
 
